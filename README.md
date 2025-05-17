@@ -1,5 +1,12 @@
-<<<<<<< HEAD
-# Mini-project-1
-=======
-# Data-Structures
->>>>>>> 4b3b40d8b29073d13fdd8cdf08e490544568e9bf
+# Data Structures Project
+
+This project contains implementations of basic data structure algorithms.
+
+## My Thoughts
+
+- Learning data structures helps in solving complex problems efficiently.
+- Practice writing functions for arrays, linked lists, stacks, queues.
+- Code clarity and comments improve maintainability.
+
+
+
