@@ -1,11 +1,10 @@
-Print all elements in reverse.
-
-By using Slicing method
+# Print all elements in reverse.
+# By using Slicing method
 def reverse(arr):
     return arr[::-1]
 print(reverse(arr=[1,2,3,4,5]))
 
-by using two-pointer approach, which is efficient (O(n/2) = O(n)).
+#By using two-pointer approach, which is efficient (O(n/2) = O(n)).
 def reverse_arr(arr):
    l ,r = 0 , len(arr)-1
    while l < r:
@@ -17,7 +16,7 @@ def reverse_arr(arr):
 print(reverse_arr(arr=[1,2,3]))
 
 
-find maximum element in the array
+#find maximum element in the array
 def max_element(arr):
     max_num = arr[0]
     for num in arr:
@@ -26,7 +25,7 @@ def max_element(arr):
     return max_num
 print(max_element(arr=[1,2,3,4,5,6]))
 
-Find the sum of all elements in the array (without using sum()).
+#Find the sum of all elements in the array (without using sum()).
 def sum_of_all(arr):
     if not arr:
         return None
@@ -42,8 +41,8 @@ print("total" ,total)
 print("avg" , avg)
 
 
-Write a function that takes an array and a target value, and
-returns the index of the target if it exists. If the target is not found, return -1.
+# Write a function that takes an array and a target value, and
+# returns the index of the target if it exists. If the target is not found, return -1.
 def linear_search(arr,target):
 
     for num in range(len(arr)):
@@ -55,7 +54,7 @@ arr = [1,2,3,4,5,6]
 target = 3
 print(linear_search(arr,target))
 
-counting the no,of occurence of the element in the array
+# counting the no,of occurence of the element in the array
 def linear_search(arr,target):
     count = 0
     for i,num in enumerate(arr):
@@ -73,11 +72,11 @@ def delete_at_index(arr, index):
 
 print(delete_at_index(arr=[1, 2, 3, 4, 5], index=2))
 
-Write a function that inserts a given value at a specific index in the array.
+#Write a function that inserts a given value at a specific index in the array.
 def insert_at_position(arr, index, value): #function signature
     arr.insert(index,value)
-#     return arr
-#
+    return arr
+
 # print(insert_at_position(arr=[1, 2, 4, 5],index=2 ,value=3))
 # Write a function that deletes the element at a given index from the array.
 
@@ -99,11 +98,11 @@ def second_largest(arr):
 
 print(second_largest(arr=[1,2,3,4,5,1]))
 
-Binary Search
-Repeatedly divide the search space in half.
-
-works only sorted arrays
-time complexity O(log n)
+# Binary Search
+# Repeatedly divide the search space in half.
+#
+# works only sorted arrays
+# time complexity O(log n)
 
 def binary_search(arr,target):
     low , high = 0,len(arr)-1
@@ -119,22 +118,22 @@ def binary_search(arr,target):
 result = binary_search(arr=[1,2,3,4,5,6,],target=9)
 print(result)
 
-What is Sliding Window?
-The Sliding Window technique is a smart way to avoid repeating work when you're processing subarrays (or substrings) in a row.
-
-Instead of checking every possible subarray (which is slow), you "slide" a fixed-size window over the array and update the result in-place — saving time.
- Sliding Window Idea (Efficient)
-Compute sum of first k elements — that’s your first window.
-
-Then slide the window 1 step at a time:
-
-Add the new element at the end
-
-Remove the element at the start
-
-Keep track of the max sum
-
- Time: O(n)
+# What is Sliding Window?
+# The Sliding Window technique is a smart way to avoid repeating work when you're processing subarrays (or substrings) in a row.
+#
+# Instead of checking every possible subarray (which is slow), you "slide" a fixed-size window over the array and update the result in-place — saving time.
+#  Sliding Window Idea (Efficient)
+# Compute sum of first k elements — that’s your first window.
+#
+# Then slide the window 1 step at a time:
+#
+# Add the new element at the end
+#
+# Remove the element at the start
+#
+# Keep track of the max sum
+#
+#  Time: O(n)
 def sliding_window(arr,k):
     if len(arr)< k :
         return None
@@ -165,16 +164,16 @@ def brute_force(arr,k):
 print(brute_force(arr=[1, 2, 3, 4, 5],k=3))
 
 
-Find the maximum sum of a subarray of size k in an array.
-Core Idea (Why it's fast):
-Instead of recalculating the sum from scratch each time, we:
-
-Subtract the element going out of the window
-
-Add the new element coming into the window
-
-So we update the sum in constant time → O(1)
-This gives us overall O(n) time — much faster!
+# Find the maximum sum of a subarray of size k in an array.
+# Core Idea (Why it's fast):
+# Instead of recalculating the sum from scratch each time, we:
+#
+# Subtract the element going out of the window
+#
+# Add the new element coming into the window
+#
+# So we update the sum in constant time → O(1)
+# This gives us overall O(n) time — much faster!
 
 def sliding_window(arr,k):
     sliding_sum = sum(arr[:k])
@@ -188,7 +187,7 @@ def sliding_window(arr,k):
 result = sliding_window(arr=[1,2,3,4,1,1,2,4],k=2)
 print(result)
 
-"Find the length of the longest subarray with sum ≤ k"
+# "Find the length of the longest subarray with sum ≤ k"
 def variable_length(arr,target):
     start = 0
     current_sum = 0
@@ -220,8 +219,8 @@ def bubble_sort(arr):
     return arr
 print(bubble_sort([5, 1, 4, 2]))
 
-It builds the sorted array one element at a time — by placing each
-element in its correct position among the previous (already sorted) elements.
+# It builds the sorted array one element at a time — by placing each
+# element in its correct position among the previous (already sorted) elements.
 
 def insertion_sort(arr):
     for i in range(1,len(arr)):
@@ -238,8 +237,8 @@ arr = [5,1,4,2]
 
 print(insertion_sort(arr))
 
-Classic Example 1: Pair With Target Sum
-Given a sorted array, find if there exists a pair whose sum is equal to a target.
+# Classic Example 1: Pair With Target Sum
+# Given a sorted array, find if there exists a pair whose sum is equal to a target.
 
 def two_pointers(arr,target):
     left ,right = 0 ,len(arr)-1
@@ -261,7 +260,7 @@ target = 6
 
 print(two_pointers(arr,target))
 
-Remove duplicates problem
+# Remove duplicates problem
 
 def remove_duplicates(arr):
     if not arr:
@@ -276,7 +275,7 @@ def remove_duplicates(arr):
     return arr[:i + 1]  # Return only the unique portio
 arr = [1,2,3,4,2,2]
 
-checking target element sum is in the array or not
+# checking target element sum is in the array or not
 def two_sum(arr,target):
     seen = set()
     for num in arr:
@@ -287,7 +286,7 @@ def two_sum(arr,target):
 
     return False
 
-Hashing counting frequency
+# Hashing counting frequency
 
 def count_freq(arr):
     freq = {}
@@ -353,9 +352,9 @@ def arr_count(arr):
 
 arr = [2, 3, 2, 5, 3, 2]
 print(arr_count(arr))
-
-prefix sum may sound techniqcal ,but it has superpower
-Turn repeated addition into instant answers
+#
+# prefix sum may sound techniqcal ,but it has superpower
+# Turn repeated addition into instant answers
 def build_prefix_sum(arr):
     prefix = [0] * len(arr)           # Step 1: create an empty list of same size
     prefix[0] = arr[0]                # Step 2: first element is same as arr[0]
@@ -365,7 +364,7 @@ def build_prefix_sum(arr):
 
     return prefix
 
-problem
+# problem
 def build_prefix_sum(arr):
     prefix = [0] *len(arr)
     prefix[0] = arr[0]
@@ -403,14 +402,14 @@ def subarray(arr,target):
             return True
         seen.add(prefix_sum)
     return False
-Test case
+#Test case
 
 arr = [3, 4, -2, 7, 1, 5]
 target = 8
-print(subarray_sum_exists(arr, target))  # Output: True
+print(subarray(arr, target))  # Output: True
 
 
-counting the subarrays of the given sum
+#counting the subarrays of the given sum
 
 from collections import defaultdict
 def count_subarray(arr,target):
