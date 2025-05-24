@@ -46,7 +46,7 @@ class Linked_list:
         self.head = new_node
 
 
-    def insert_after(self,prev_value,data): #tart traversing from the head node.
+    def insert_after(self,prev_value,data): #start traversing from the head node.
         current = self.head # #current is a pointer used to move through the list.
         while current and current.data != prev_value: #This loop keeps moving to the next node until it finds the node with prev_value.
 
