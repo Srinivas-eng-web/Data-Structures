@@ -83,13 +83,23 @@ class Linked_list:
         prev.next = current.next
         current = None
 
+    def reversed_linked_list(self):
+        prev = None
+        current = self.head
+
+        while current:
+            next_node = current.next # saving the next node
+            current.next = prev # reverse the link
+            prev = current
+            current = next_node
+        self.head = prev
 
     #display the list:
     def display(self):
         if self.is_empty():
             print("linked is empty")
             return
-        current  = self.head
+        current = self.head
 
         while current:
             print(current.data , end="-->>")
@@ -107,8 +117,11 @@ if __name__ ==  "__main__":
     l1.display() #output : 10-->>20-->>30-->>40-->>None
 
     l1.delete(20)
-    l1.display()   #output : 10-->>30-->>40-->>50-->>None
+    l1.display()   #output : 10-->>30-->>40-->>None
+    print("original List")
+    l1.display()
 
-    l1.delete(10)
-    l1.display()  #output
-    # 30-->>40-->>50-->>None
+    #Reverse the linked_list
+    l1.reversed_linked_list()
+    print("Reversed list")
+    l1.display()  #output : 40-->>30-->>10-->>None
