@@ -142,60 +142,8 @@ class CircularQueue:
             return -1
         return self.Queue[(self.rear - 1 + self.capacity) % self.capacity)]
 
+cq = CircularQueue()
 
 
 
 
-        # "Implement Stack or Queue using Array or Linked List."
-
-        # 1.. Stack using Array (Python list)
-
-        class StackArray:
-            def __init__(self):
-                self.stack = []
-
-            def push(self, item):
-                self.stack.append(item)
-                return self.stack
-
-            def pop(self):
-                if not self.is_empty():
-                    return self.stack.pop()
-
-            def peek(self):
-                if not self.is_empty():
-                    return self.stack[-1]
-                return None
-
-            def is_empty(self):
-                return len(self.stack) == 0
-
-        a = StackArray()
-        print(a.push(29))
-        print(a.push(2))
-
-        # Stack using Linked List
-
-        class Node:
-            def __init__(self, data):
-                self.data = data
-                self.next = None
-
-        class Linkedlist:
-            def __init__(self):
-                self.top = None
-
-            def push(self, item):
-                new_node = Node(data)
-                new_node.next = self.top
-                self.top = new_node
-
-            def pop(self):
-                if self.is_empty():
-                    return None
-                popped = self.top.value
-                self.top = self.top.next
-                return popped
-
-            def is_empty(self):
-                return self.top is None
