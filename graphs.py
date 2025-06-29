@@ -132,3 +132,48 @@ print("DFS traversal ex:2")
 g.dfss("E")
 
 # output : E-->F-->G-->H-->
+
+"""BFS = Breadth-First Search  
+->Think of BFS like ripples in water:
+->Start at a node
+->Visit all neighbors first (level 1)
+->Then their neighbors (level 2)
+And so on...
+
+Real-Life Analogy:
+Imagine spreading a rumor: you tell your friends → they tell theirs → they tell theirs…"""
+
+from collections import defaultdict ,deque
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def add_edge(self,u,v,directed = False):
+        self.graph[u].append(v)
+        if not directed:
+            self.graph[v].append(u)
+
+    def bfs(self,start):
+        visited = set()
+        queue = deque()
+
+        queue.append(start)
+        visited.add(start)
+        while queue:
+            node = queue.popleft()
+            print(node ,end="-->")
+
+            for neighbour in self.graph[node]:
+                if neighbour not in visited:
+                    queue.append(neighbour)
+                    visited.add(neighbour)
+
+g1 = Graph()
+g1.add_edge("A","B")
+g1.add_edge("A","C")
+g1.add_edge("B","D")
+g1.add_edge("C","E")
+print("Breadth Traversal from A")
+g1.bfs("A")
+
+#output : A-->B-->C-->D-->E-->
