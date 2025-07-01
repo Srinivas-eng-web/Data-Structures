@@ -177,3 +177,53 @@ print("Breadth Traversal from A")
 g1.bfs("A")
 
 #output : A-->B-->C-->D-->E-->
+
+
+""" Cycle detection patten : A cycle is path that starts and ends at the same and does not
+reuse the any edge ,but visit the same again only if it start/end
+
+Why is cycle detection is important:
+Detection cycles is critical because cycles can cause errors ,insufficiences or  Vulnarabilities
+in systems - especially
+Networking
+operating system
+Databases
+Depending resolution
+"""
+
+class Graph_D:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def add_edge(self,u,v):
+        self.graph[u].append(v)
+        self.graph[v].append(u)
+    def has_cycle_until(self,node,visited,parent):
+        visited.add(node)
+
+        for neighbour in self.graph[node]:
+
+            if neighbour not in visited:
+                if self.has_cycle_until(neighbour,visited,node):
+                    return True
+            elif neighbour != parent:
+                return True
+
+        return False
+    def has_cycle(self):
+        visited = set()
+        for node in self.graph:
+            if node not in visited:
+                if self.has_cycle_until(node , visited,None):
+                    return True
+        return False
+C = Graph_D()
+C.add_edge("A","B")
+C.add_edge("A","C")
+C.add_edge("C","D")
+C.add_edge("D","A")
+print("Cycle Detected:" if C.has_cycle() else "No Cycle Found")
+
+# output : A-->B-->C-->D-->E-->Cycle Detected:
+
+
