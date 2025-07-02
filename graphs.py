@@ -227,3 +227,46 @@ print("Cycle Detected:" if C.has_cycle() else "No Cycle Found")
 # output : A-->B-->C-->D-->E-->Cycle Detected:
 
 
+
+#Cycle detection pattern using directed method
+
+class Graph_d:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def add_edge(self,u,v):
+        self.graph[u].append(v)
+
+    def cycle_directed_until(self,node,visited,rec_stack):
+        visited.add(node)
+        rec_stack.add(node)
+
+        for neighbour in self.graph[node]:
+            if neighbour not in visited:
+                if self.cycle_directed_until(neighbour,visited,rec_stack):
+                    return True
+            elif neighbour in rec_stack:
+                return True
+        rec_stack.remove(node)
+
+        return False
+    def cycle(self):
+        visited = set()
+        rec_stack = set()
+        for node in self.graph:
+            if node not in visited:
+                if self.cycle_directed_until(node,visited,rec_stack):
+                    return True
+        return False
+
+
+s = Graph_d()
+s.add_edge("A","B")
+s.add_edge("B","C")
+s.add_edge("C","A")
+
+print("cycle is dected:" if s.cycle() else " no cycle detected ")
+
+#cycle is dected:
+
+
