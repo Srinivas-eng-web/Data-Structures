@@ -425,3 +425,162 @@ def count_subarray(arr,target):
     return count
 arr = [1,2,3,-2,5]
 print(count_subarray(arr,target=5))
+
+#----------------------------------Two Pointers -------------->
+""" A technque which is involved 2 indices to iterate over the data structure of strings or arrays
+from different directions or at different speeds"""
+
+#Reverse a array in place
+#Problem: Given arr = [1, 2, 3, 4, 5], reverse the array without using extra space.
+
+def reverse_arr(arr):
+    left ,right = 0 , len(arr)-1
+    while left < right:
+        arr[left], arr[right] = arr[right],arr[left]
+
+        left += 1
+        right -= 1
+
+    return arr
+arr = [1,2,3,4,5]
+result = reverse(arr)
+print(f"reverse array in a place :{result}")  # output : reverse array in a place :[5, 4, 3, 2, 1]
+
+#Example 2: Check if String is Palindrome
+
+def palin(s):
+    left,right = 0,len(s)-1
+
+    while left < right:
+        if s[left] != s[right]:
+
+            return False
+
+        left += 1
+        right -= 1
+    return True
+
+print(f"checking given string is palin or not : {palin(s="Srinivas")}")  #False
+
+print(f"checking given string is palin or not : {palin(s="radar")}") # True
+
+#Problem: Two Sum II – Input Array Is Sorted
+# Given a sorted array of integers numbers, find two numbers such that they add up to a specific target.
+# Return the indices (1-based) of the two numbers.
+def two_sum(arr,target):
+    left,right = 0,len(arr)-1
+
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum == target:
+            return [left+1,right+1]
+        elif current_sum > target:
+            right -= 1
+        else:
+            left += 1
+
+    #return []
+
+print(f"the value of the sum is target:,{two_sum(arr=[2,7,11,15] ,target=9)}")
+
+
+#Problem: Check if a string is a palindrome(ignore spaces, punctuation, and case).
+
+
+def is_palin(s):
+    rm =  "".join(r.lower() for r in s if r.isalnum())
+    print(rm)
+
+    l, r = 0,len(rm)-1
+    while l < r:
+        if rm[l] != rm[r]:
+            return False
+        l += 1
+        r -= 1
+    return True
+
+print(is_palin(s="Sri niv aS"))
+
+#Problem: In a sorted array, remove duplicates in-place and return the length of unique elements.
+
+#?
+
+def remove_dup(arr):
+    if not arr:
+        return 0
+
+    slow = 0
+    for fast in range(1,len(arr)):
+        if arr[fast] != arr[slow]:
+            slow += 1
+
+            arr[slow] = arr[fast]
+    return slow+1
+
+arr = [1,2,2,2,3,4,99]
+k = remove_dup(arr)
+print("After removing the duplicates from the arary:", format(arr[:k]))
+
+#Problem: Merge two sorted arrays into a single sorted array.
+
+def merge_sorted(a,b):
+
+    result = []
+    i = j = 0
+
+    while i < len(a) and j < len(b):
+        if a[i] < b[j]:
+            result.append(a[i])
+            i += 1
+
+        else:
+            result.append(b[j])
+            j += 1
+
+    #add remaining
+
+    result.extend(a[i:])
+    result.extend(b[j:])
+    return result
+a = [1, 3, 5]
+b = [2, 4, 6]
+print(merge_sorted(a, b))
+
+#Move Zeros to End
+#Move all 0s to the end of the array while keeping the order of other elements.
+
+def move_zero_to_end(arr):
+    non_zero_pos = 0
+
+    for fast in range(len(arr)):
+        if arr[fast] != 0:
+            arr[non_zero_pos],arr[fast] = arr[fast],arr[non_zero_pos]
+            non_zero_pos += 1
+
+    return arr
+print("moved zeros to end: ", move_zero_to_end(arr=[1,0,0,2,3,9,0,10]))
+
+
+#Goal: Find two heights that form the container holding the most water.
+
+def finding_height(height):
+    left = 0
+    right = len(height)-1
+    max_water = 0
+
+    while left < right:
+        width = right - left
+        water = width * min(height[left],height[right])
+        max_water = max(max_water,water)
+
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+
+    return max_water
+height =  [ 1, 8, 6, 2, 5, 4, 8 ]
+
+print("max height of water :",finding_height(height))
+
+
